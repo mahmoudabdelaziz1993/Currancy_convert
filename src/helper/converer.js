@@ -22,7 +22,10 @@ const convertCurrancy =async(from,to,amont)=>{
 	const rate = await getExchangeRate(from,to);
 	const country = await getCounties(to);
 	const res = (rate * amont).toFixed(3);
-	return `${amont} ${from} is worth  ${res} ${to}  . and u can spend it in the folloing countries  : ${country.join(' , ')}`
+	const result =`${res} ${to}`;
+	const pre =`${amont} ${from} is worth  ${res} ${to}  . and u can spend it in the folloing countries  : ${country.join(' , ')}`;
+
+	return {result,pre}; 
 
 };
 convertCurrancy('EGP','SAR',1000).then((data)=>{

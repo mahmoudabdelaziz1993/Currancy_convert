@@ -1,26 +1,30 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-
+import Footer from './components/Footer'
+import Navbar from './components/Navbar';
+import Convert from './components/Convert'
+import { BrowserRouter, Route } from 'react-router-dom';
+import {getCurrancy} from './helper/converer';
+import _ from 'lodash';
 class App extends Component {
+  state = {
+    codes: []
+  }
+  async componentDidMount() {
+    const xx = await getCurrancy();
+    const x = xx.filter((x)=>x!== null); 
+    this.setState({
+      codes: _.uniq(x)
+    })
+  }
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <BrowserRouter>
+        <div className="App">
+          <Navbar />
+          <Convert codes={this.state.codes}/>
+          <Footer />
+        </div>
+      </BrowserRouter>
     );
   }
 }

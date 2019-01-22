@@ -28,7 +28,5 @@ const convertCurrancy =async(from,to,amont)=>{
 	return {result,pre}; 
 
 };
-convertCurrancy('EGP','SAR',1000).then((data)=>{
-	console.log(data);
-});
+
 export {getCurrancy,getCounties,convertCurrancy}

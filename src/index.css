@@ -61,7 +61,7 @@ code {
   color: #ffffff;
 }
 .page-footer  {
-  position:absolute;
+  position:fixed;
   bottom:0;
   width:100%;
   background-color: #000000;
